@@ -23,7 +23,7 @@ int FilterArray(string[] array) //Фильтрация массива и воз�
         if (array[i].Length <= 3)
         {
             countArray++;
-        }
+        } 
     }
     return countArray;
 }
