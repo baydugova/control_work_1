@@ -10,25 +10,40 @@
 // [“Russia”, “Denmark”, “Kazan”] → []
 
 
-Console.WriteLine("Введите строки через запятую:");
-string input = Console.ReadLine();
+Console.WriteLine("Задайте элементы массива через запятую: ");
+string[] array = Console.ReadLine().Split(',');
 
+Console.WriteLine($"Новый массив: {string.Join(", ", NewArray(array))}");
 
-string[] inputArray = input.Split(',');
-string[] result = new string[inputArray.Length];
-int count = 0;
-for (int i = 0; i < inputArray.Length; i++)
+int FilterArray(string[] array) //Фильтрация массива и возврат количества элементов, согласно условию
 {
-    
-    if (inputArray[i].Length <= 3)
+    int countArray = 0;
+    for (int i = 0; i < array.Length; i++)
     {
-        result[count++] = inputArray[i];
+        if (array[i].Length <= 3)
+        {
+            countArray++;
+        }
     }
+    return countArray;
 }
 
-Console.WriteLine("Строки дляной 3 или менее символов: ");
-for (int i = 0; i < count; i++)
+string[] NewArray(string[] array) //создаем новый массив, согласно условию
 {
-    Console.Write(result[i] + " ");
+    string[] newArray = new string[FilterArray(array)];
+    int size = 0;
+
+    for (int i = 0; i < array.Length; i++)
+    {
+        if (array[i].Length <= 3)
+        {
+            newArray[size] = array[i];
+            size++;
+        }
+    }
+    return newArray; //возврат нового массива
 }
+
+
+
 
